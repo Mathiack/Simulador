@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 1. Simulador de Patrulha e Vigilância
 
 Descrição: Simula patrulhas que cobrem áreas específicas e evita pontos de alto risco, utilizando algoritmos de cobertura e vigilância.
@@ -45,3 +46,6 @@ Uso: Planejamento estratégico para evacuação segura em situações de risco.
 Descrição: Modela a chegada de reforços e a retirada estratégica de tropas, calculando rotas seguras e eficientes para ambos os cenários.
 Algoritmos: Algoritmos de otimização de rotas e modelos de teoria dos jogos para otimizar o tempo de chegada de reforços e minimizar perdas.
 Uso: Planejamento de estratégias seguras para movimentação de tropas em operações de reforço ou retirada.
+=======
+# Simulador de Algorítmos
+>>>>>>> e0476c683cb9552d17dcb3d622a7ae941e3647ec
