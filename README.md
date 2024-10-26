@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 1. Simulador de Patrulha e Vigilância
 
 Descrição: Simula patrulhas que cobrem áreas específicas e evita pontos de alto risco, utilizando algoritmos de cobertura e vigilância.
