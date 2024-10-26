@@ -1,2 +1,1 @@
-# Simulador
- Simulador de Algortimos
+# Simulador de Algorítmos
