@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Algoritmos de Defesa Cibernética</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header, section {
+            background-color: #fff;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+        header {
+            text-align: center;
+        }
+        select, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .results {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .attack {
+            color: red;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .error {
+            color: orange;
+            font-weight: bold;
+        }
+        .loading {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .hidden {
+            display: none;
+        }
+        .file {
+            font-family: "Courier New", Courier, monospace;
+            color: #555;
+        }
+        .virus {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Simulador de Algoritmos de Defesa Cibernética</h1>
+    </header>
+    <section>
+        <h2>Escolha um Algoritmo</h2>
+        <select id="algorithm">
+            <option value="ids">Sistema de Detecção de Intrusões (IDS)</option>
+            <option value="encryption">Criptografia de Dados</option>
+            <option value="firewall">Firewall</option>
+            <option value="antivirus">Antivírus</option>
+        </select>
+        <button onclick="simulate()">Simular</button>
+        <div id="loading" class="loading hidden"></div>
+        <div class="results" id="results"></div>
+    </section>
+
+    <script>
+        function simulate() {
+            const algorithm = document.getElementById('algorithm').value;
+            const results = document.getElementById('results');
+            const loading = document.getElementById('loading');
+            
+            results.innerHTML = '';
+            loading.classList.remove('hidden');
+
+            const steps = getSteps(algorithm);
+            let stepIndex = 0;
+
+            function showNextStep() {
+                if (stepIndex < steps.length) {
+                    results.innerHTML += steps[stepIndex] + '<br>';
+                    stepIndex++;
+                    setTimeout(showNextStep, 2000);
+                } else {
+                    loading.classList.add('hidden');
+                }
+            }
+
+            setTimeout(showNextStep, 2000);
+        }
+
+        function getSteps(algorithm) {
+            switch (algorithm) {
+                case 'ids':
+                    return [
+                        'Etapa 1: Inicializando sistema IDS...',
+                        'Etapa 2: Monitorando tráfego de rede...',
+                        'Etapa 3: Analisando pacotes suspeitos...',
+                        '<span class="success">Etapa 4: Intrusões detectadas e bloqueadas com sucesso!</span>'
+                    ];
+                case 'encryption':
+                    if (Math.random() < 0.5) {
+                        return [
+                            'Etapa 1: Iniciando processo de criptografia...',
+                            'Etapa 2: Selecionando algoritmo de criptografia...',
+                            '<span class="error">Falha na criptografia! Tentando reverter...</span>',
+                            'Etapa 3: Revertendo criptografia...',
+                            '<span class="success">Etapa 4: Reversão concluída com sucesso!</span>'
+                        ];
+                    } else {
+                        return [
+                            'Etapa 1: Iniciando processo de criptografia...',
+                            'Etapa 2: Selecionando algoritmo de criptografia...',
+                            'Etapa 3: Aplicando criptografia aos dados...',
+                            '<span class="success">Etapa 4: Dados criptografados com sucesso!</span>'
+                        ];
+                    }
+                case 'firewall':
+                    return [
+                        'Etapa 1: Inicializando configuração do firewall...',
+                        'Etapa 2: Definindo regras de firewall...',
+                        'Etapa 3: Aplicando regras de firewall...',
+                        '<span class="success">Etapa 4: Firewall configurado com sucesso!</span>'
+                    ];
+                case 'antivirus':
+                    return [
+                        'Etapa 1: Iniciando verificação de vírus...',
+                        'Etapa 2: Escaneando arquivos do sistema...',
+                        'Etapa 3: Analisando comportamento suspeito...',
+                        'Etapa 4: Encontrando arquivos maliciosos...',
+                        '<span class="attack">Vírus detectado em:</span><br>' +
+                        '<span class="file">C:\\Usuários\\Guilherme\\Downloads\\<span class="virus">malware.exe</span></span><br>' +
+                        'Buscando outros arquivos maliciosos...<br>' +
+                        '<span class="file">C:\\Arquivos de Programas\\<span class="virus">infected_app.exe</span></span><br>' +
+                        '<span class="file">C:\\Sistema\\<span class="virus">trojan.exe</span></span><br>' +
+                        'Etapa 5: Isolando e removendo vírus...<br>' +
+                        '<span class="success">Etapa 6: Vírus removidos com sucesso!</span>'
+                    ];
+                default:
+                    return ['Algoritmo desconhecido.'];
+            }
+        }
+    </script>
+</body>
+</html>
